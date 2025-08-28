@@ -29,9 +29,9 @@ public class contaDias {
         anoA = teclado.nextInt();
 
         diasTotais = calculaDias(diaA, dia, mesA, mes, anoA, ano);
-
+        System.out.println("END");
         System.out.println(diasTotais);
-
+        
         teclado.close();
     }
 
