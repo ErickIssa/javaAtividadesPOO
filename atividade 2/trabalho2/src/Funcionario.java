@@ -19,10 +19,17 @@ public class Funcionario {
         this.nome = nome;
     }
 
-     public String getDataNasc(){
+    public String getDataNasc(){
         return dataNasc;
     }
     public void setDataNasc(String dataNasc){
         this.dataNasc = dataNasc;
+    }
+
+    public String getCargo(){
+        return cargo;
+    }
+    public void cargo(String cargo){
+        this.cargo = cargo;
     }
 }
