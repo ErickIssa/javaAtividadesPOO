@@ -7,7 +7,7 @@ public class Funcionario {
     private int nmrFilhos;
     private String dataAdmissao;
 
-    public Funcionario(String nome, String dataNasc,String cargo,String tipoContrato,float valorSal,int nmrFilhos,String dataAdmissao){
+    public Funcionario(String nome, String dataNasc){
         this.nome = nome;
         this.dataNasc = dataNasc;
     }
