@@ -4,7 +4,7 @@ public class Funcionario {
     private String cargo;
     private String tipoContrato;
     private float valorSal;
-    private int nmrFilhos;
+    private int nmrFilhos = 0;
     private String dataAdmissao;
 
     public Funcionario(String nome, String dataNasc){
@@ -16,70 +16,69 @@ public class Funcionario {
     public float calcSalarioBruto(float horasTrabalhadas){
         float valorF;
 
-        // Corrigido: usar equals() para comparar strings
         if("Horista".equals(this.tipoContrato)){
             valorF = this.valorSal * horasTrabalhadas;
         } else {
-            valorF = this.valorSal; // Para outros tipos de contrato, retorna o salário fixo
+            valorF = this.valorSal;
         }
         return valorF;
     }
     
     
-    public double calcularDescontoINSS(float salarioContribuicao) {
-        if (salarioContribuicao <= 1302.00) {
-            return salarioContribuicao * 0.075; // 7.5%
-        } else if (salarioContribuicao <= 2571.29) {
-            return (1302.00 * 0.075) + ((salarioContribuicao - 1302.00) * 0.09);
-        } else if (salarioContribuicao <= 3856.94) {
-            return (1302.00 * 0.075) + 
-                   ((2571.29 - 1302.00) * 0.09) + 
-                   ((salarioContribuicao - 2571.29) * 0.12);
-        } else if (salarioContribuicao <= 7507.49) {
-            return (1302.00 * 0.075) + 
-                   ((2571.29 - 1302.00) * 0.09) + 
-                   ((3856.94 - 2571.29) * 0.12) + 
-                   ((salarioContribuicao - 3856.94) * 0.14);
+    public float calcularDescontoINSS(float salarioContribuicao) {
+        if (salarioContribuicao <= 1302.00F) {
+            return salarioContribuicao * 0.075F;
+        } else if (salarioContribuicao <= 2571.29F) {
+            return (1302.00F * 0.075F) + ((salarioContribuicao - 1302.00F) * 0.09F);
+        } else if (salarioContribuicao <= 3856.94F) {
+            return (1302.00F * 0.075F) + 
+                ((2571.29F - 1302.00F) * 0.09F) + 
+                ((salarioContribuicao - 2571.29F) * 0.12F);
+        } else if (salarioContribuicao <= 7507.49F) {
+            return (1302.00F * 0.075F) + 
+                ((2571.29F - 1302.00F) * 0.09F) + 
+                ((3856.94F - 2571.29F) * 0.12F) + 
+                ((salarioContribuicao - 3856.94F) * 0.14F);
         } else {
-            // Para salários acima do teto, calcula apenas até o limite máximo
-            return (1302.00 * 0.075) + 
-                   ((2571.29 - 1302.00) * 0.09) + 
-                   ((3856.94 - 2571.29) * 0.12) + 
-                   ((7507.49 - 3856.94) * 0.14);
+            return (1302.00F * 0.075F) + 
+                ((2571.29F - 1302.00F) * 0.09F) + 
+                ((3856.94F - 2571.29F) * 0.12F) + 
+                ((7507.49F - 3856.94F) * 0.14F);
         }
     }
 
-    public double calcularIRRF(double salario) {
-    int dependentes = this.nmrFilhos;
-    double deducaoDependentes = dependentes * 189.59;
+    public float calcularIRRF(double salario) {
+        int dependentes = this.nmrFilhos;
+        float deducaoDependentes = dependentes * 189.59F;
 
-    // Base de cálculo
-    double baseCalculo = salario - deducaoDependentes;
+        double baseCalculo = salario - deducaoDependentes;
 
-    if (baseCalculo <= 1903.98) {
-        return 0.0;
-    } else if (baseCalculo <= 2826.65) {
-        return (baseCalculo - 1903.98) * 0.075;
-    } else if (baseCalculo <= 3751.05) {
-        return (2826.65 - 1903.98) * 0.075 +
-               (baseCalculo - 2826.65) * 0.15;
-    } else if (baseCalculo <= 4664.68) {
-        return (2826.65 - 1903.98) * 0.075 +
-               (3751.05 - 2826.65) * 0.15 +
-               (baseCalculo - 3751.05) * 0.225;
-    } else {
-        return (2826.65 - 1903.98) * 0.075 +
-               (3751.05 - 2826.65) * 0.15 +
-               (4664.68 - 3751.05) * 0.225 +
-               (baseCalculo - 4664.68) * 0.275;
+        if (baseCalculo <= 1903.98F) {
+            return 0.0F;
+        } else if (baseCalculo <= 2826.65F) {
+            return (float)((baseCalculo - 1903.98F) * 0.075F);
+        } else if (baseCalculo <= 3751.05F) {
+            return (float)((2826.65F - 1903.98F) * 0.075F +
+                        (baseCalculo - 2826.65F) * 0.15F);
+        } else if (baseCalculo <= 4664.68F) {
+            return (float)((2826.65F - 1903.98F) * 0.075F +
+                        (3751.05F - 2826.65F) * 0.15F +
+                        (baseCalculo - 3751.05F) * 0.225F);
+        } else {
+            return (float)((2826.65F - 1903.98F) * 0.075F +
+                        (3751.05F - 2826.65F) * 0.15F +
+                        (4664.68F - 3751.05F) * 0.225F +
+                        (baseCalculo - 4664.68F) * 0.275F);
+        }
     }
-}
 
 
     public float getSalarioDescontado(int horasTrabalhadas) {
         float salarioBruto = calcSalarioBruto(horasTrabalhadas);
         double descontoINSS = calcularDescontoINSS(salarioBruto);
-        return (float) (salarioBruto - descontoINSS);
+        double descontoIRRF = calcularIRRF(salarioBruto);
+        
+        return (float) (salarioBruto - descontoINSS - descontoIRRF);
     }
             
     
