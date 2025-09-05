@@ -22,4 +22,11 @@ public class Data{
     public void printData() {
         System.out.println(getDataFormatada());
     }
+
+ public int calculaDiffDias(int diaA, int mesA, int anoA) {
+        int diasAtual = this.dia + (this.mes * 30) + (this.ano * 360);
+        int diasAdd = diaA + (mesA * 30) + (anoA * 360);
+        
+        return diasAtual - diasAdd;
+    }
 }

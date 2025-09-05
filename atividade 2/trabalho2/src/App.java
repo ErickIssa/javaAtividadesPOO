@@ -10,5 +10,6 @@ public class App {
 
       Data dataSy = new Data();
       dataSy.printData();
+      System.out.println(dataSy.calculaDiffDias(05, 9, 2024));
 }       
 }
