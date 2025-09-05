@@ -6,25 +6,26 @@ public class Funcionario {
     private float valorSal;
     private int nmrFilhos = 0;
     private String dataAdmissao;
+    private int horasTrabalhadas;
+    private float salarioBruto;
 
     public Funcionario(String nome, String dataNasc){
         this.nome = nome;
         this.dataNasc = dataNasc;
     }
 
-    
-    public float calcSalarioBruto(float horasTrabalhadas){
-        float valorF;
-
-        if("Horista".equals(this.tipoContrato)){
-            valorF = this.valorSal * horasTrabalhadas;
+    private void atualizarSalarioBruto() {
+        if("Horista".equals(this.tipoContrato)) {
+            this.salarioBruto = this.valorSal * this.horasTrabalhadas;
         } else {
-            valorF = this.valorSal;
+            this.salarioBruto = this.valorSal;
         }
-        return valorF;
     }
-    
-    
+
+    public float getSalarioBruto(){
+        return this.salarioBruto;
+    }
+
     public float calcularDescontoINSS(float salarioContribuicao) {
         if (salarioContribuicao <= 1302.00F) {
             return salarioContribuicao * 0.075F;
@@ -72,32 +73,28 @@ public class Funcionario {
         }
     }
 
-
-    public float getSalarioDescontado(int horasTrabalhadas) {
-        float salarioBruto = calcSalarioBruto(horasTrabalhadas);
-        double descontoINSS = calcularDescontoINSS(salarioBruto);
-        double descontoIRRF = calcularIRRF(salarioBruto);
-        
-        return (float) (salarioBruto - descontoINSS - descontoIRRF);
+    public float getSalarioDescontado() {
+        double descontoINSS = calcularDescontoINSS(this.salarioBruto);
+        double descontoIRRF = calcularIRRF(this.salarioBruto);
+        return (float) (this.salarioBruto - descontoINSS - descontoIRRF);
     }
     
-    public void getFolhaPagamento(int horasTrabalhadas){
-        float salarioBruto = calcSalarioBruto(horasTrabalhadas);
-        double descontoINSS = calcularDescontoINSS(salarioBruto);
-        double descontoIRRF = calcularIRRF(salarioBruto);
+    public void getFolhaPagamento(){
+        double descontoINSS = calcularDescontoINSS(this.salarioBruto);
+        double descontoIRRF = calcularIRRF(this.salarioBruto);
 
-        System.out.println("Salário Bruto: " + salarioBruto);
+        System.out.println("Salário Bruto: " + this.salarioBruto);
         System.out.println("Desconto Inss: " +  descontoINSS);
         System.out.println("Desconto IRRF: " + descontoIRRF);
-        System.out.println("Salario Valor Liquido: " + (salarioBruto - descontoINSS - descontoIRRF));
+        System.out.println("Salario Valor Liquido: " + (this.salarioBruto - descontoINSS - descontoIRRF));
     }
     
-    //--------------------------------------------------------------------------------
     public String getTipoContrato(){
         return tipoContrato;
     }
     public void setTipoContrato(String tipoContrato){
         this.tipoContrato = tipoContrato;
+        atualizarSalarioBruto();
     }
 
     public float getValorSal(){
@@ -106,6 +103,7 @@ public class Funcionario {
 
     public void setValorSal(float valorSal){
         this.valorSal = valorSal;
+        atualizarSalarioBruto();
     }
 
     public int getNmrFilhos(){
@@ -131,4 +129,21 @@ public class Funcionario {
         this.dataAdmissao = dataAdmissao;
     }
 
+    public int getHorasTrabalhadas() {
+        return horasTrabalhadas;
+    }
+
+    public void setHorasTrabalhadas(int horasTrabalhadas) {
+        this.horasTrabalhadas = horasTrabalhadas;
+        atualizarSalarioBruto();
+    }
+
+    public String getNome(){
+        return nome;
+    }
+
+     public String getDataNasc(){
+        return dataNasc;
+    }
+   
 }
