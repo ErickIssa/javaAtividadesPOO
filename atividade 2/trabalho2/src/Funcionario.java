@@ -80,7 +80,17 @@ public class Funcionario {
         
         return (float) (salarioBruto - descontoINSS - descontoIRRF);
     }
-            
+    
+    public void getFolhaPagamento(int horasTrabalhadas){
+        float salarioBruto = calcSalarioBruto(horasTrabalhadas);
+        double descontoINSS = calcularDescontoINSS(salarioBruto);
+        double descontoIRRF = calcularIRRF(salarioBruto);
+
+        System.out.println("Salário Bruto: " + salarioBruto);
+        System.out.println("Desconto Inss: " +  descontoINSS);
+        System.out.println("Desconto IRRF: " + descontoIRRF);
+        System.out.println("Salario Valor Liquido: " + (salarioBruto - descontoINSS - descontoIRRF));
+    }
     
     //--------------------------------------------------------------------------------
     public String getTipoContrato(){
