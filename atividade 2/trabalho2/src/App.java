@@ -7,5 +7,8 @@ public class App {
       f1.setValorSal(20);
       System.out.println(f1.getTipoContrato());
       System.out.println(f1.calcSalario(10));
+
+      Data dataSy = new Data();
+      dataSy.printData();
 }       
 }
