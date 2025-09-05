@@ -12,24 +12,66 @@ public class Funcionario {
         this.dataNasc = dataNasc;
     }
 
-    public String getNome(){
-        return nome;
+    
+    public float calcSalario(float horasTrabalhadas){
+        float valorF;
+
+        if(this.tipoContrato == "Horista"){
+            valorF = this.valorSal * horasTrabalhadas;
+        }else{
+            valorF = this.valorSal;
+        }
+        return valorF;
     }
-    public void setNome(String nome){
-        this.nome = nome;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //--------------------------------------------------------------------------------
+    public String getTipoContrato(){
+        return tipoContrato;
+    }
+    public void setTipoContrato(String tipoContrato){
+        this.tipoContrato = tipoContrato;
     }
 
-    public String getDataNasc(){
-        return dataNasc;
+    public float getValorSal(){
+        return valorSal;
     }
-    public void setDataNasc(String dataNasc){
-        this.dataNasc = dataNasc;
+
+    public void setValorSal(float valorSal){
+        this.valorSal = valorSal;
+    }
+
+    public int getNmrFilhos(){
+        return nmrFilhos;
+    }
+
+    public void setNmrFilhos(int nmrFilhos){
+        this.nmrFilhos = nmrFilhos;
     }
 
     public String getCargo(){
         return cargo;
     }
-    public void cargo(String cargo){
+    public void setCargo(String cargo){
         this.cargo = cargo;
     }
+
+    public String getDataAdmissao(){
+        return dataAdmissao;
+    }
+
+    public void setDataAdmissao(String dataAdmissao){
+        this.dataAdmissao = dataAdmissao;
+    }
+
 }
