@@ -10,22 +10,27 @@ public class Dna {
         lerDna();
     }
 
-    public void lerDna(){
-          Scanner scanner = new Scanner(System.in);
+    public void lerDna() {
+    Scanner scanner = new Scanner(System.in);
+    
+    System.out.println("Digite as 9 bases do DNA (uma por vez, use A, C, G ou T):");
+    
+    for (int i = 0; i < 9; i++) {
+        boolean baseValida = false;
         
-        System.out.println("Digite as 9 bases do DNA (uma por vez, use A, C, G ou T):");
-        
-        for(int i = 0; i < 9; i++) {
+        while (!baseValida) {
             System.out.print("Base " + (i + 1) + ": ");
             String input = scanner.nextLine().toUpperCase();
             
             if (input.length() != 1 || !"ACGT".contains(input)) {
                 System.out.println("Caractere inválido! Use apenas A, C, G ou T.");
-                continue;
+            } else {
+                sequencia[i] = input.charAt(0);
+                baseValida = true;
             }
-            
-            sequencia[i] = input.charAt(0);
         }
+    }
+    scanner.close();
     }
 
     public char[] getSequencia() {
