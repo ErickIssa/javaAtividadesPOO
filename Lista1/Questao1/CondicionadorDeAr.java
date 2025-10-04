@@ -32,7 +32,7 @@ public class CondicionadorDeAr {
         }
     }
 
-    public void diminuirTemperatura(int valor){
+    public void diminuirTemperatura(){
         if(!status){
             System.out.println("O condicionador está desligado");
             return;
@@ -42,7 +42,15 @@ public class CondicionadorDeAr {
         if(tempAtual > 15){
             termostato.setTemperatura((tempAtual)-1);
         }else{
-            System.out.println("Temperatura de 15°C máxima");
+            System.out.println("Temperatura de 15°C mínima");
         }
     }
+
+    public int getTemperatura() {
+    if (!this.status) {
+        return -1; // ou lançar uma exceção
+    }
+    return termostato.getTemperatura();
+}
+
 }
