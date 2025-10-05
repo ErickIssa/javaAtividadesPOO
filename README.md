@@ -23,4 +23,4 @@ O objetivo deste material é praticar e consolidar os pilares da Orientação a 
 
 ---
 
-*Repositório criado por: [Seu Nome ou Nome do Aluno]*
+*Repositório criado por: [Érick Vinícius Issa Silva]*
