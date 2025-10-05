@@ -16,7 +16,6 @@ public class Biblioteca {
     }
 }
 
-
     public void listarLivros(int totalLivros) {
         System.out.println("Livros na biblioteca:");
         for (int i = 0; i < totalLivros; i++) {
