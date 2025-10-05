@@ -1,4 +1,4 @@
-package Questao2;
+package Questao2e3;
 import java.util.Scanner;
 
 public class Dna {
@@ -30,7 +30,6 @@ public class Dna {
             }
         }
     }
-    scanner.close();
     }
 
     public char[] getSequencia() {
@@ -71,7 +70,17 @@ public class Dna {
         }
     }
     
+    public int similaridade(Dna dna) {
+    int simG = 0;
     
+    for (int i = 0; i < this.sequencia.length; i++) {
+        if (this.sequencia[i] == dna.sequencia[i]) {
+            simG += 1;
+        } else {
+            continue;
+        }
+    }
+    return simG;
 }
-
+}
 
