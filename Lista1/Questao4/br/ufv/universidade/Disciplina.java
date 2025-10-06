@@ -25,7 +25,7 @@ public class Disciplina {
      public void setPratica(boolean pratica) {
         this.pratica = pratica;
     }
-
+    @Override
     public String toString() {
         return "Disciplina: " + nome + ", Pratica: " + pratica;
     }

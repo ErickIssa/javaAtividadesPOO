@@ -7,4 +7,5 @@ public class Aluno {
     private String email;
     private String endereco;
     Turma turma;
+    private Professor professor;
 }

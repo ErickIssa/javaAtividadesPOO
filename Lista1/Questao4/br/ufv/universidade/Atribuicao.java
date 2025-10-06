@@ -25,6 +25,7 @@ public class Atribuicao {
         this.disciplina = disciplina;
     }
 
+    @Override
     public String toString(){
         return "Atribuicao["+professor.toString() + " - "+ disciplina.toString() + "]";
     }

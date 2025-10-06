@@ -7,4 +7,5 @@ public class Professor {
     private String endereco;
     Turma[] turmas;
     Departamento departamento;
+    private Aluno[] aluno;
 }
