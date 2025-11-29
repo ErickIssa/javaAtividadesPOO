@@ -9,7 +9,7 @@ public class TestaCalculadora {
         System.out.println("Soma: " + calc.soma(10, 5));
         System.out.println("Subtração: " + calc.subtracao(10, 5));
         System.out.println("Multiplicação: " + calc.multiplicacao(10, 5));
-        System.out.println("Divisão: " + calc.divisao(10, 5));
+        System.out.println("Divisão: " + calc.divisao(10, 0));
 
         // Calculadora científica
         CalculadoraCientifica calcC = new CalculadoraCientifica();
